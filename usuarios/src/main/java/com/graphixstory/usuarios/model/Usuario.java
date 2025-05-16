@@ -33,9 +33,10 @@ public class Usuario {
     @Column(nullable = false)
     private String apellido;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date FechaNacimiento;
 
-    
+    @Column(nullable = false)
+    private String correo;
 }
 
