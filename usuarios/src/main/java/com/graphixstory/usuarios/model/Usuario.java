@@ -38,5 +38,12 @@ public class Usuario {
 
     @Column(nullable = false)
     private String correo;
+
+    @Column(nullable = true)
+    private String TipoUser;
+
+    @Column (nullable = true)
+    private String T;
 }
+
 
