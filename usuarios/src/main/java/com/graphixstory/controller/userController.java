@@ -24,11 +24,11 @@ public class userController {
 
     @GetMapping("/api/usuarios")
     public ResponseEntity<List<Usuario>> listar() {
-        List<Usuario> usuarios = usuarioService.findAll(); // 'findAll' con 'a' minúscula, convención de Java
+        List<Usuario> usuarios = usuarioService.findAll(); 
         if (usuarios.isEmpty()) {
-            return ResponseEntity.noContent().build(); // Retorna 204 No Content si no hay usuarios
+            return ResponseEntity.noContent().build(); 
         }
-        return ResponseEntity.ok(usuarios); // Retorna 200 OK y la lista de usuarios
+        return ResponseEntity.ok(usuarios); 
     }
     
 
