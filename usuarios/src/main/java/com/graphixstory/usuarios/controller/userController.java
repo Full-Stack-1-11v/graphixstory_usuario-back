@@ -1,4 +1,4 @@
-package com.graphixstory.controller;
+package com.graphixstory.usuarios.controller;
 
 import com.graphixstory.usuarios.model.Usuario;
 import com.graphixstory.usuarios.service.UsuarioService;
