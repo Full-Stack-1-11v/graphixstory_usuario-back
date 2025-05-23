@@ -20,9 +20,17 @@ public class UsuarioService {
     public List<Usuario> findAll() { 
         return usuarioRepo.findAll();
     }
-    public Usuario findById(Long id) { 
+    public Usuario findById(long id) { 
         return usuarioRepo.findById(id).get();
     }
 
+    public Usuario guardarUser(Usuario usuario){
+        return usuarioRepo.save(usuario);
+
+    }
+
+    public void borrarUser(Long id) {
+        usuarioRepo.deleteById(id);
+    }
 
 }

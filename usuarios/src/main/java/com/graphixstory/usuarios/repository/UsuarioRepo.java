@@ -9,11 +9,4 @@ import java.util.List;
 @Repository
 public interface UsuarioRepo extends JpaRepository<Usuario, Long >{
 
-    List<Usuario> findByApellido(String apellido);
-
-    List<Usuario> findByNombreAndApellidoList(String nombre, String apellido);
-
-    List<Usuario> findByTipoUser(String tipoUser);
-
-    List<Usuario> findById(Integer id);
 }
