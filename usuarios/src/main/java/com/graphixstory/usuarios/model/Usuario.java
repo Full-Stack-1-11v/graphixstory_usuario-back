@@ -42,8 +42,6 @@ public class Usuario {
     @Column(nullable = true)
     private String TipoUser;
 
-    @Column (nullable = true)
-    private String T;
 }
 
 
