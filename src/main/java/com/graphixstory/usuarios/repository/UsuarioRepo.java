@@ -7,6 +7,6 @@ import java.util.List;
 @Repository
 public interface UsuarioRepo extends JpaRepository<Usuario, Long >{
 
-    List<Usuario> findByTipoUser(String TipoUser);
+    List<Usuario> findByTipoUser(String tipoUser);
 
 }

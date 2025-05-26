@@ -33,8 +33,8 @@ public class UsuarioService {
         usuarioRepo.deleteById(id);
     }
     
-    public List<Usuario> findByTipoUser(String TipoUser) {
-        return usuarioRepo.findByTipoUser(TipoUser);
+    public List<Usuario> findByTipoUser(String tipoUser) {
+        return usuarioRepo.findByTipoUser(tipoUser);
     }
 
 }
