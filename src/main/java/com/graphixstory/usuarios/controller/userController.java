@@ -3,6 +3,7 @@ package com.graphixstory.usuarios.controller;
 import com.graphixstory.usuarios.model.Usuario;
 import com.graphixstory.usuarios.service.UsuarioService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -80,5 +81,18 @@ public class userController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/tipo") 
+    public ResponseEntity<List<Usuario>> getUsuariosByTipoUser(@RequestParam String tipo) {
+        if (tipo == null || tipo.trim().isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+        }
+        List<Usuario> usuarios = usuarioService.findByTipoUser(tipo);
+        if (usuarios.isEmpty()) {
+           
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(usuarios, HttpStatus.OK); 
+    }
+
 
 }

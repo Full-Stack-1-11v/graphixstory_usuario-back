@@ -32,5 +32,9 @@ public class UsuarioService {
     public void borrarUser(Long id) {
         usuarioRepo.deleteById(id);
     }
+    
+    public List<Usuario> findByTipoUser(String tipoUser) {
+        return usuarioRepo.findByTipoUser(tipoUser);
+    }
 
 }
