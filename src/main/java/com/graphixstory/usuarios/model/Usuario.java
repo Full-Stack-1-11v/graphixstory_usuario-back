@@ -40,10 +40,10 @@ public class Usuario {
     private String correo;
 
     @Column(nullable = false)
-    private String TipoUser;
+    private String tipoUser;
 
     @Column(nullable = true)
-    private String DescripUser;
+    private String descripUser;
 
 }
 
