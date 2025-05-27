@@ -54,7 +54,7 @@ public class userController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> actualizar(@PathVariable Integer id, @RequestBody Usuario curso) {
+    public ResponseEntity<Usuario> actualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
         try {
             Usuario user = usuarioService.findById(id);
             user.setId(id);
