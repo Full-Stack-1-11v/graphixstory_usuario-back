@@ -41,6 +41,7 @@ public class Usuario {
     @Column(nullable = true)
     private Date FechaNacimiento;
 
+    @Email(message = "el formato del correo electronico es invalido")
     @Column(nullable = false)
     private String correo;
 
