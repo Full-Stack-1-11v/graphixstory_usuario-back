@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+import org.springframework.validation.annotation.Validated;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table (name= "user")
@@ -24,6 +27,8 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "El RUT no puede estar vacio")
+    @Pattern(regexp = "^\\d{1,2}\\.\\d{3}\\.\\d{3}-[kK\\d]$",message = "El formato de RUT es invalido. Ej= 12.345.678-K")
     @Column(unique= true, length = 13, nullable=false)
     private String run;
 
