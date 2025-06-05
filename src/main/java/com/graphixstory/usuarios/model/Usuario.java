@@ -12,8 +12,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-import org.springframework.validation.annotation.Validated;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity
