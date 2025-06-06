@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.annotations.TimeZoneStorage;
 import org.hibernate.validator.constraints.ModCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.graphixstory.usuarios.model.Usuario;
+import com.graphixstory.usuarios.repository.UsuarioRepo;
 import com.graphixstory.usuarios.service.UsuarioService;
 
 @springframework
@@ -22,10 +24,66 @@ public class UsuariosServiceTest {
     public void testGetUsuario() {
 
         //given
-        List<Usuario> usuario = new ArrayList<>();
+        List<Usuario> Listusuario = new ArrayList<>();
 
         //when 
-        //when(usuariorepositorio) result = usuarioService.getAllUsuarios();
+        when(usuariorepositorio.findAll().thenReturn(Listusuario));
+        //than
+        List<Usuario> usuarios = usuarioService.findAll();
+
+        assertNull(usuarios);
     }
+
+    @Test
+    public void testFindById(){
+        Integer codigo = 1;
+        Usuario usuario = new Usuario (codigo, "20.358.565-5", "Ana", "fio",  null,"ana.fio@gmail.com","Estudiante",null);
+
+        when(usuariorepositorio.findById(codigo)).thenReturn(Optional.of(usuario));
+
+        Usuario found = usuarioService.findById(codigo);
+
+        assertNotNull(found);
+        assertEquals(codigo, found.getCodigo());
+    }
+    @Test
+    public void testSave(){
+        Usuario usuario = new Usuario (codigo, "20.358.565-5", "Ana", "fio",  null,"ana.fio@gmail.com","Estudiante",null);
+
+        when(usuariorepositorio.save(usuario)).thenReturn(usuario);
+
+        Usuario save = usuarioService.guardarUser(usuario);
+
+        assertNotNull(saved);
+        assertEquals("20.358.565-5", saved.getRun());
+    }
+
+    @Test
+    public void testDeleteByID(){
+        Integer codigo = 1;
+
+        doNothing().when(usuariorepositorio).deleteById(codigo);
+
+        usuarioService.deleteById(codigo);
+
+        verify(usuariorepositorio, times(1).deleteById(codigo));
+
+    }
+
+    @Test
+    public void testGetTipoUSer() {
+
+        List<Usuario> Listusuario = new ArrayList<>();
+        Listusuario.add(new Usuario (1, "20.358.565-5", "Ana", "fio",  null,"ana.fio@gmail.com","Estudiante",null));
+        Listusuario.add(new Usuario (2, "20.358.445-5", "Ava", "mia",  null,"ana.dao@gmail.com","Estudiante",null));
+
+        when(usuariorepositorio.findByTipoUser("Estudiante").thenReturn(Listusuario));
+
+        List<Usuario> usuarios = usuarioService.findByTipoUser("Estudiante");
+
+        assertNull(usuarios);
+    }
+
+
 
 }
