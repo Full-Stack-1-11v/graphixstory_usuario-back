@@ -101,6 +101,6 @@ public class UsuariosServiceTest {
 
         assertNotNull(usuarios);
     }
-
+    /*@Test (expected = NullPointerException.class)*/ 
 
 }
