@@ -101,6 +101,19 @@ public class UsuariosServiceTest {
 
         assertNotNull(usuarios);
     }
+    @Test
+    public void testnullUsuario() {
+
+        //given
+        List<Usuario> Listusuario = null;
+
+        when(usuariorepositorio.findAll()).thenReturn(Listusuario);
+
+        //than
+        List<Usuario> usuarios = usuarioService.findAll();
+
+        assertNull(usuarios);
+    }
     /*@Test (expected = NullPointerException.class)*/ 
 
 }
