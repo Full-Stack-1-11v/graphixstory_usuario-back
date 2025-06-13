@@ -41,6 +41,20 @@ public class UsuarioControllerTest {
 
     }
 
-    
+    @Test 
+    void obtener_un_usuario() throws Exception {
+
+        /*Mockito.when(usuarioservice.findById(1L)).thenReturn(Collections.emptyList());*/
+
+
+
+
+
+
+
+
+    }
+
+
 
 }
