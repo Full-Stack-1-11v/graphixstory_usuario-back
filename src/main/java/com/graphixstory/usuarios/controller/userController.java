@@ -2,6 +2,10 @@ package com.graphixstory.usuarios.controller;
 
 import com.graphixstory.usuarios.model.Usuario;
 import com.graphixstory.usuarios.service.UsuarioService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +26,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-
+@Tag(name = "Usuarios", description = "Api encargada de la gestion de usuarios")
 public class userController {
 
     @Autowired
     private UsuarioService usuarioService;
 
     @GetMapping
+    @Operation(summary = "obtiene todos los usuarios de registrados", description="entrega una lista de todos los usuarios")
     public ResponseEntity<List<Usuario>> listar() {
         List<Usuario> usuarios = usuarioService.findAll(); 
         if (usuarios.isEmpty()) {
@@ -38,6 +43,7 @@ public class userController {
     }
     
     @PostMapping
+    @Operation(summary = "")
     public ResponseEntity<Usuario> guardar(@RequestBody Usuario usuario) {
         Usuario usuario2 = usuarioService.guardarUser(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario2);
