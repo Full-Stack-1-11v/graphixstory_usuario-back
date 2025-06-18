@@ -10,6 +10,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.graphixstory.usuarios.controller.userController;
+import com.graphixstory.usuarios.model.Usuario;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -35,22 +36,31 @@ public class UsuarioControllerTest {
 
         Mockito.when(usuarioservice.findAll()).thenReturn(Collections.emptyList());
 
-        mockmvc.perform(get("/usuarios"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(0)));
+        mockmvc.perform(get("/api/usuarios"))
+                .andExpect(status().is(204));
 
     }
 
     @Test 
     void obtener_un_usuario() throws Exception {
 
-        /*Mockito.when(usuarioservice.findById(1L)).thenReturn(Collections.emptyList());*/
+        Mockito.when(usuarioservice.findById(1)).thenReturn(new Usuario());
+
+        mockmvc.perform(get("/api/usuarios/1"))
+                .andExpect(status().isOk());
 
 
+    }
 
+    @Test
+    void guardar_un_usuario( ) throws Exception {
 
+        Usuario usuario = new Usuario(1,"20.254.325-7","","", null,"fre.Aguallo@gmail.com", "Estudiante", null);
 
+        Mockito.when(usuarioservice.guardarUser(any(Usuario.class))).thenReturn(usuario);
 
+        mockmvc.perform(get("/api/usuarios/1"))
+                .andExpect(status().is(200));
 
 
     }
