@@ -43,13 +43,15 @@ public class userController {
     }
     
     @PostMapping
-    @Operation(summary = "")
+    @Operation(summary = "Guardar usuario", 
+    description = "almacena todos los datos correspondientes al usuario")
     public ResponseEntity<Usuario> guardar(@RequestBody Usuario usuario) {
         Usuario usuario2 = usuarioService.guardarUser(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuario2);
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "obtiene un usuario", description = " Su filtro de busqueda es por {id}")
     public ResponseEntity<Usuario> buscar(@PathVariable Long id) {
         try {
             Usuario usuario = usuarioService.findById(id);
@@ -60,6 +62,7 @@ public class userController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Actualizar los datos de un usuario", description = "Se solicita la id para ejecucion")
     public ResponseEntity<Usuario> actualizar(@PathVariable Integer id, @RequestBody Usuario usuario) {
         try {
             Usuario user = usuarioService.findById(id);
@@ -79,6 +82,7 @@ public class userController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina un usuario", description = "Filtro por ID")
     public ResponseEntity<?> eliminar(@PathVariable Long id) {
         try {
             usuarioService.borrarUser(id);
@@ -87,7 +91,8 @@ public class userController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/tipo") 
+    @GetMapping("/tipo")
+    @Operation(summary = "Obtener usuarios por categoria", description = "Entrega una lista de todos los usuarios que se encuentran en la misma categoria") 
     public ResponseEntity<List<Usuario>> getUsuariosByTipoUser(@RequestParam String tipo) {
         if (tipo == null || tipo.trim().isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
