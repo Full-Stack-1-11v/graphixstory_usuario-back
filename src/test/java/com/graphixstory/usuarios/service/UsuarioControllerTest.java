@@ -19,6 +19,8 @@ import java.util.Collections;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.ArgumentMatchers.longThat;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -61,6 +63,30 @@ public class UsuarioControllerTest {
 
         mockmvc.perform(get("/api/usuarios/1"))
                 .andExpect(status().is(200));
+
+
+    }
+
+    @Test
+    void eliminar_un_usuario() throws Exception {
+
+        Usuario usuario = new Usuario(1,"20.254.325-7","","", null,"fre.Aguallo@gmail.com", "Estudiante", null);
+
+        doNothing().when(usuarioservice).borrarUser(1L);
+
+        mockmvc.perform(delete("/api/usuarios/1"))
+                .andExpect(status().is(204));
+
+    }
+
+    @Test
+    void lista_usuarios_por_tipo() throws Exception {
+
+
+        Mockito.when(usuarioservice.findByTipoUser("Administrador")).thenReturn(Collections.emptyList());
+
+        mockmvc.perform(get("/api/usuarios/Administrador"))
+                .andExpect(status().is(   400));
 
 
     }
