@@ -58,11 +58,11 @@ public class userController {
         return ResponseEntity.ok(usuarios); 
     }
    /**
-     * Actualiza completamente la información de un paciente existente.
+     * Actualiza completamente la información de un Usuario existente.
      * 
-     * @param id       ID del paciente a actualizar.
-     * @param paciente Objeto {@link Paciente} con la nueva información.
-     * @return Objeto {@link Paciente} actualizado.
+     * @param id       ID del Usuario a actualizar.
+     * @param Usuario Objeto {@link Usuario} con la nueva información.
+     * @return Objeto {@link Usuario} actualizado.
      */
     @PostMapping
     @Operation(summary = "Guardar usuario", 
