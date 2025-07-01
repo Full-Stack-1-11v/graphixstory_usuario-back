@@ -133,9 +133,9 @@ public class UsuarioControllerTest {
                 .content(objectMapper.writeValueAsString(usuarioActualizadoRequest))) // El cuerpo de la petición en JSON
                 .andExpect(status().isOk()) // Espera un código de estado 200 OK
                 .andExpect(jsonPath("$.id").value(usuarioId)) // Verifica el ID en el JSON de respuesta
-                .andExpect(jsonPath("$.nombre").value("Pedro")) // Verifica el nombre actualizado
-                .andExpect(jsonPath("$.apellido").value("Gomez")) // Verifica el apellido actualizado
-                .andExpect(jsonPath("$.correo").value("pedro.gomez@example.com")); // Verifica el correo actualizado
+                .andExpect(jsonPath("$.nombre").value("Ana")) // Verifica el nombre actualizado
+                .andExpect(jsonPath("$.apellido").value("Sol")) // Verifica el apellido actualizado
+                .andExpect(jsonPath("$.correo").value("fre.Aguallo@gmail.com")); // Verifica el correo actualizado
     }
 
 }
